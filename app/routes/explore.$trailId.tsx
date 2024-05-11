@@ -5,7 +5,6 @@ import Card from "./components/card.component";
 import Dialog from "./components/dialog.component";
 import { useState } from "react";
 import { buildNodeQuery, buildNodeRelationQuery, runQuery } from "./api-neo4j/query.neo4j";
-import { QueriesEnum } from "enums/queries.enums";
 import { useLoaderData } from "@remix-run/react";
 import { NodeEnum } from "enums/node.enums";
 import { IParams } from "interfaces/params.interface";

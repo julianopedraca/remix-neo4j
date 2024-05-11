@@ -1,6 +1,6 @@
 import { IModalStatus } from "interfaces/modal-status.interface";
 import Button from "./button.component";
-import { buildNodeQuery, buildNodeRelationQuery, runQuery } from "../api-neo4j/query.neo4j";
+import { buildNodeRelationQuery, runQuery } from "../api-neo4j/query.neo4j";
 import { NodeEnum } from "enums/node.enums";
 import { RelationEnum } from "enums/relation.enum";
 
