@@ -45,10 +45,10 @@ This command will build and run the necessary Docker containers for Neo4j.
 ```Bash
 npm run dev
 ```
-This command will start the Remix development server, typically accessible at http://localhost:3000 by default.
+This command will start the Remix development server, typically accessible at http://localhost:5173 by default.
 
 ## Routes
-**/explore:** Get all steps from trail and use it to render those infomations on the screen, showing the title of the trail and cards with the step information
+**/explore/trail-1:** Get all steps from trail and use it to render those infomations on the screen, showing the title of the trail and cards with the step information
 
 ## Project Structure
 ```
