@@ -75,3 +75,4 @@ interfaces
 ![Alt text](./public/images/tela-inicial.png)
 ![Alt text](./public/images/modal-criar.png)
 ![Alt text](./public/images/tela-inicial-2.png)
+![Alt text](./public/images/relacionamento.png)

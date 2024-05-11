@@ -44,8 +44,7 @@ export default function Explore() {
   const toggleModal = () => setIsOpen(!isOpen);
 
   return (
-    <div className="h-full">
-      <div className="flex pb-10 bg-[#F8F8F8] w-full h-full flex-col items-center ">
+      <div className="flex pb-10 bg-[#F8F8F8] w-full h-screen flex-col items-center overflow-auto">
         <div className="flex w-[50rem] justify-between  mt-20 flex-col">
           <div className="flex w-full flex-row justify-between h-12 mb-10">
             <h1 className="font-semibold text-3xl leading-10 flex items-center justify-center">
@@ -65,6 +64,5 @@ export default function Explore() {
           <Dialog isOpen={isOpen} onClose={toggleModal} data={data}></Dialog>
         </div>
       </div>
-    </div>
   );
 }
