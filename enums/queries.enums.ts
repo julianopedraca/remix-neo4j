@@ -7,7 +7,4 @@ export enum QueriesEnum {
     relationTrailStep = `MATCH (trail:Trail { id: 'trail-1' }) MATCH (step:Step { id: 'step-1' }) MERGE (trail)-[:HAS_STEP]->(step)`,
     relationThemeTrail = `MATCH (theme:Theme { id: 'theme-1' }) MATCH (trail:Trail { id: 'trail-1' }) MERGE (theme)-[:HAS_TRAIL]->(trail)`,
     relationAcademyTheme = `MATCH (academy:Academy { id: 'academy-1' }) MATCH (theme:Theme { id: 'theme-1' }) MERGE (academy)-[:HAS_THEME]->(theme) `,
-
-    getTrailStep = `MATCH r=(t:Trail)-[:HAS_STEP]->(s:Step) RETURN r AS TrailStep`,
-    getTrail = `MATCH (trail:Trail { id: 'trail-1' }) RETURN (trail)`
 }

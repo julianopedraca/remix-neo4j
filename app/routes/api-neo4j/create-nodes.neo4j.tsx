@@ -1,19 +1,22 @@
 import { Neo4jError } from "neo4j-driver";
 import { runQuery } from "./query.neo4j";
-import { Queries } from "interfaces/queries.interface";
+import { IQueries } from "interfaces/queries.interface";
 import { QueriesEnum } from "enums/queries.enums";
 
+/**
+ * Create first nodes to execute the application
+ */
 export async function createNodes() {
     const queries = QueriesEnum;
 
-    const createNodeQueries: Queries = {
+    const createNodeQueries: IQueries = {
         step: queries.createStep,
         trail: queries.createTrail,
         theme: queries.createTheme,
         academy: queries.createAcademy
     }
 
-    const createRelationQueries: Queries = {
+    const createRelationQueries: IQueries = {
         trailStep: queries.relationTrailStep,
         themeTrail: queries.relationThemeTrail,
         themeAcademy: queries.relationAcademyTheme,

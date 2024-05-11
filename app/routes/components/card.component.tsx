@@ -1,6 +1,6 @@
-import { CardProps } from "interfaces/card-props.interface";
+import { ICardProps } from "interfaces/card-props.interface";
 
-export default function Card({title, content}:CardProps) {
+export default function Card({title, content}:ICardProps) {
     return (
         <div className="w-full bg-white rounded-lg border border-[#E2E2E4] p-6 mt-6">
             <div className="h-6">

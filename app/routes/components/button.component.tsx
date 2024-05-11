@@ -1,6 +1,6 @@
-import { ButtonProps } from "interfaces/button-props.interface";
+import { IButtonProps } from "interfaces/button-props.interface";
 
-export default function Button({ buttonClass, imgClass, imgSrc, text, type=undefined, func } : ButtonProps) {
+export default function Button({ buttonClass, imgClass, imgSrc, text, type=undefined, func } : IButtonProps) {
     return (
         <button type={type} className={buttonClass} onClick={func}>
             {

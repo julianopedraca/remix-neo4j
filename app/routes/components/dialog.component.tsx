@@ -1,10 +1,15 @@
-import { ModalStatus } from "interfaces/modal-status.interface";
+import { IModalStatus } from "interfaces/modal-status.interface";
 import Button from "./button.component";
-import { runQuery } from "../api-neo4j/query.neo4j";
+import { buildNodeQuery, buildNodeRelationQuery, runQuery } from "../api-neo4j/query.neo4j";
+import { NodeEnum } from "enums/node.enums";
+import { RelationEnum } from "enums/relation.enum";
 
-export default function Dialog({ isOpen, onClose }: ModalStatus) {
+export default function Dialog({ isOpen, onClose, data }: IModalStatus) {
+    const node = NodeEnum
+    const relation = RelationEnum
 
     async function handleSubmit(e: { preventDefault: () => void; target: any; }) {
+
         // Prevent the browser from reloading the page
         e.preventDefault();
 
@@ -14,10 +19,17 @@ export default function Dialog({ isOpen, onClose }: ModalStatus) {
 
         // Or you can work with it as a plain object:
         const formJson = Object.fromEntries(formData.entries());
-        console.log(formJson);
+
         await runQuery(`MATCH (t:Trail {id: 'trail-1'}) 
         CREATE (t)-[:HAS_STEP]->(s:Step {id: '${formJson.id}', title: '${formJson.title}', content: '${formJson.content}'})
-        `)
+        `);
+
+        const trailStepQuery = buildNodeRelationQuery(node.trail,relation.has_step,node.step,'trailStep');
+        const  getTrailStep = await runQuery(trailStepQuery);
+        const stepTrail = getTrailStep.records.map(record => record.entries().next().value[1].end)
+
+        data.stepTrail = stepTrail
+
         onClose()
     }
 
@@ -39,7 +51,9 @@ export default function Dialog({ isOpen, onClose }: ModalStatus) {
                                                 <input
                                                     id="id"
                                                     name="id"
-                                                    className="w-full h-12 px-3 py-4 rounded-xl border border-[#ECECED] bg-[#F8F8F8] gap-2 text-[#110C22] font-semibold text-base" />
+                                                    className="w-full h-12 px-3 py-4 rounded-xl border border-[#ECECED] bg-[#F8F8F8] gap-2 text-[#110C22] font-semibold text-base"
+                                                    required
+                                                    />
                                             </div>
 
                                             <div className="mt-4">
@@ -48,7 +62,9 @@ export default function Dialog({ isOpen, onClose }: ModalStatus) {
                                                 <input
                                                     id="title"
                                                     name="title"
-                                                    className="w-full h-12 px-3 py-4 rounded-xl border border-[#ECECED] bg-[#F8F8F8] gap-2 text-[#110C22] font-semibold text-base" />
+                                                    className="w-full h-12 px-3 py-4 rounded-xl border border-[#ECECED] bg-[#F8F8F8] gap-2 text-[#110C22] font-semibold text-base"
+                                                    required
+                                                    />
 
                                             </div>
 
@@ -59,7 +75,9 @@ export default function Dialog({ isOpen, onClose }: ModalStatus) {
                                                     id="content"
                                                     name="content"
                                                     rows={4}
-                                                    className="resize-none w-full px-3 py-4 rounded-xl border border-[#ECECED] bg-[#F8F8F8] gap-2 text-[#110C22] font-semibold text-base"></textarea>
+                                                    className="resize-none w-full px-3 py-4 rounded-xl border border-[#ECECED] bg-[#F8F8F8] gap-2 text-[#110C22] font-semibold text-base"
+                                                    required
+                                                    ></textarea>
                                             </div>
                                             <div className="flex right-0 gap-2 justify-end mt-5">
                                                 <Button

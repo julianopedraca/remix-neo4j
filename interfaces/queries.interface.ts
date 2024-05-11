@@ -1,3 +1,3 @@
-export interface Queries {
+export interface IQueries {
     [key: string]: string
 }

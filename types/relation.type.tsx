@@ -1,0 +1,1 @@
+export type RelationType = "HAS_STEP" | "HAS_TRAIL" | "HAS_THEME" 
